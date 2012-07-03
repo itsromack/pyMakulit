@@ -33,9 +33,9 @@ def main():
 		y += step_y
 
 		screen.fill((255,255,255)) # white BG
-
 		screen.blit(bg, (0,0))
 		screen.blit(morefun, (screen_width-407, screen_height-150))
+		pygame.draw.line(screen, (0,0,0),(0,0),(screen_width, screen_height))
 		screen.blit(mario, (x, y))
 		pygame.display.flip()
 
