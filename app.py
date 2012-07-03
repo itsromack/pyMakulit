@@ -44,6 +44,12 @@ def main():
 				running = False
 			elif event.type == pygame.MOUSEMOTION:
 				print "Mouse @ (%d %d)" % event.pos
+			elif event.type == pygame.MOUSEBUTTONDOWN:
+				pos = event.pos
+				click_x = pos[0]
+				click_y = pos[1]
+				if click_x <= x + 26 and click_y <= y + 32:
+					print "BOOM"
 
 if __name__ == "__main__":
 	main()
