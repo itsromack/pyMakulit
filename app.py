@@ -25,6 +25,8 @@ def main():
 
 	x,y,xs,ys,step_x,step_y = 0,182,screen_width,0,2,2
 
+	clock = pygame.time.Clock()
+
 	running = True
 	while running:
 		# if mario is on edge, change direction
@@ -62,6 +64,8 @@ def main():
 					else:
 						mario = orig_mario
 						icon_status = "mario"
+
+		clock.tick(100)
 						
 
 if __name__ == "__main__":
