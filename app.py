@@ -17,8 +17,11 @@ def main():
 	bg = pygame.image.load("images/pyconph.jpg")
 	morefun = pygame.image.load("images/morefun-mini.jpg")
 
-	mario = pygame.image.load("images/Mario.gif")
+	orig_mario = pygame.image.load("images/Mario.gif")
 	supermario = pygame.image.load("images/Super Mario.gif")
+	fierymario = pygame.image.load("images/Fiery Mario.gif")
+	mario = orig_mario
+	icon_status = "mario"
 
 	x,y,xs,ys,step_x,step_y = 0,182,screen_width,0,2,2
 
@@ -50,6 +53,16 @@ def main():
 				click_y = pos[1]
 				if click_x <= x + 26 and click_y <= y + 32:
 					print "BOOM"
+					if icon_status == "mario":
+						mario = supermario
+						icon_status = "supermario"
+					elif icon_status == "supermario":
+						mario = fierymario
+						icon_status = "fierymario"
+					else:
+						mario = orig_mario
+						icon_status = "mario"
+						
 
 if __name__ == "__main__":
 	main()
