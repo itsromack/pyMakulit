@@ -42,6 +42,8 @@ def main():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
+			elif event.type == pygame.MOUSEMOTION:
+				print "Mouse @ (%d %d)" % event.pos
 
 if __name__ == "__main__":
 	main()
