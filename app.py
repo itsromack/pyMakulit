@@ -22,11 +22,14 @@ def main():
 	supermario = pygame.image.load("images/Super Mario.gif")
 	fierymario = pygame.image.load("images/Fiery Mario.gif")
 	github = pygame.image.load("images/github.jpg")
+	mushroom = pygame.image.load("images/mushroom.gif")
+
 	mario = orig_mario
 	icon_status = "mario"
 
 	x,y,step_x,step_y = random.randint(0,screen_width-1),random.randint(0,screen_height-1),2,2
 	gx,gy,step_gx,step_gy = random.randint(0,screen_width-1),random.randint(0,screen_height-1),2,2
+	mx, my = screen_width / 2, screen_height / 2
 
 	clock = pygame.time.Clock()
 
@@ -41,6 +44,15 @@ def main():
                         step_gx = -step_gx
                 if gy > screen_height - 16 or gy < 0:
                         step_gy = -step_gy
+
+		screen.fill((255,255,255)) # white BG
+                screen.blit(bg, (0,0))
+                screen.blit(morefun, (screen_width-407, screen_height-150))
+                pygame.draw.line(screen, (0,0,0),(0,0),(screen_width, screen_height))
+                screen.blit(mario, (x, y))
+                screen.blit(github,(gx,gy))
+		screen.blit(mushroom, (mx, my))
+                pygame.display.flip()		
 
 		x += step_x
 		y += step_y
@@ -67,14 +79,15 @@ def main():
 					else:
 						mario = orig_mario
 						icon_status = "mario"
-
-		screen.fill((255,255,255)) # white BG
-                screen.blit(bg, (0,0))
-                screen.blit(morefun, (screen_width-407, screen_height-150))
-                pygame.draw.line(screen, (0,0,0),(0,0),(screen_width, screen_height))
-                screen.blit(mario, (x, y))
-                screen.blit(github,(gx,gy))
-                pygame.display.flip()
+			elif event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_UP:
+					my -= 5
+				elif event.key == pygame.K_DOWN:
+					my += 5
+				elif event.key == pygame.K_LEFT:
+					mx -= 5
+				elif event.key == pygame.K_RIGHT:
+					mx += 5
 
 		clock.tick(100)
 						
